@@ -4,12 +4,20 @@ from pymarc import *
 from datetime import datetime
 import re, os
 
+## Script by Arcadia Falcone, arcadiafalcone at gmail, updated 7/8/2015
+## Validates and updates language codes in MARC records:
+## -Checks language codes in 008 and 041 against valid MARC language codes
+## -If code in 008 or 041 is discontinued, updates to current code
+## -Checks that subfield codes in 041 are valid
+## -If multiple language codes are concatenated, separates each into its own 
+##  instance of the subfield, maintaining the original order
+
 ## This is the most advanced version of this script as of 7/8/2015.
 # Translation handling still in process; ambiguous records skipped for now.
 
 # 4/14/2015: added typo codes
 # 4/20/2015: fixed bug where 041 not updated for leading/trailing spaces or
-# trailing period
+# trailing period.
 # 6/8/2015: added indents to log output for readability
 # 6/18/2015: fixed bug that missed leading space
 # 7/7/2015: updated space handling to use regex instead of strip()
@@ -20,18 +28,6 @@ import re, os
 def getMARCFilenames():
     """Select input filename and generate output filename for updated 
     MARC records, as well as basename for log files."""
-=======
-## Script by Arcadia Falcone, arcadiafalcone at gmail, updated 12/19/2014
-## Validates and updates language codes in MARC records:
-## -Checks language codes in 008 and 041 against valid MARC language codes
-## -If code in 008 or 041 is discontinued, updates to current code
-## -Checks that subfield codes in 041 are valid
-## -If multiple language codes are concatenated, separates each into its own 
-##  instance of the subfield, maintaining the original order
-
-def openFilesIO():
-    """Select input file, and create updated MARC file and error log text file
-    for output, with file names based on the input file selected."""
     import os
     import Tkinter, tkFileDialog
     root = Tkinter.Tk()
