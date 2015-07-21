@@ -7,7 +7,6 @@ import re, os
 ## This is the most advanced version of this script as of 7/8/2015.
 # Translation handling still in process; ambiguous records skipped for now.
 
-<<<<<<< HEAD:update_language_codes.py
 # 4/14/2015: added typo codes
 # 4/20/2015: fixed bug where 041 not updated for leading/trailing spaces or
 # trailing period
@@ -33,7 +32,6 @@ def getMARCFilenames():
 def openFilesIO():
     """Select input file, and create updated MARC file and error log text file
     for output, with file names based on the input file selected."""
->>>>>>> 769a05f7effd53f834d08a129e90186728e83c4d:update_discontinued_marc_language_codes_git.py
     import os
     import Tkinter, tkFileDialog
     root = Tkinter.Tk()
